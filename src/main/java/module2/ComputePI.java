@@ -1,8 +1,9 @@
 package module2;
 
 /**
- * Write a program called ComputePI to compute the value of π (compare it with Math.PI)
+ *Write a program called ComputePI to compute the value of π (compare it with Math.PI)
  */
+
 public class ComputePI {
     public static void main(String[] args) {
         double pi = 0;
