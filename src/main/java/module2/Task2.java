@@ -3,6 +3,7 @@ package module2;
 /**
  * By using the bubble sort algorithm, write a Java program to sort an integer array of 10 elements in ascending.
  */
+
 public class Task2 {
     public static int[] bubbleSort(int[] arr) {
         for (int i = 0; i < arr.length - 1; ) {
