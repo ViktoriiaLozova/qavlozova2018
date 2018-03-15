@@ -10,9 +10,9 @@ public class ComputePI {
         for (int i = 0; i < iter; i++) {
             double denominator = 2 * i + 1;
             if (i % 2 == 0) {
-                pi = pi + 4/denominator;
+                pi = pi + 4 / denominator;
             } else {
-                pi = pi - 4/denominator;
+                pi = pi - 4 / denominator;
             }
         }
         System.out.println(pi);
