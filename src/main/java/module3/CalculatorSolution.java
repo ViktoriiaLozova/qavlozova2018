@@ -22,35 +22,35 @@ public class CalculatorSolution {
     public static void main(String[] args) throws IOException {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         System.out.println("Please enter value 1: ");
-        String input1 = reader.readLine();
-        double number1 = Double.parseDouble(input1);
+        String inputStringValue1 = reader.readLine();
+        double valueForCalculation1 = Double.parseDouble(inputStringValue1);
 
         System.out.println("Please enter value 2: ");
-        String input2 = reader.readLine();
-        double number2 = Double.parseDouble(input2);
+        String inputStringValue2 = reader.readLine();
+        double valueForCalculation2 = Double.parseDouble(inputStringValue2);
 
-        System.out.println("Sum: " + add(number1, number2));
-        System.out.println("Subtraction: " + sub(number1, number2));
-        System.out.println("Multiplication: " + mult(number1, number2));
-        System.out.println("Division: " + div(number1, number2));
+        System.out.println("Sum: " + add(valueForCalculation1, valueForCalculation2));
+        System.out.println("Subtraction: " + sub(valueForCalculation1, valueForCalculation2));
+        System.out.println("Multiplication: " + mult(valueForCalculation1, valueForCalculation2));
+        System.out.println("Division: " + div(valueForCalculation1, valueForCalculation2));
 
-        Calculator m = new Calculator();
+        Calculator calc = new Calculator();
 
         System.out.println("Please enter value for adding to memory: ");
         String addMemoryValue = reader.readLine();
         double addMemoryNumber = Double.parseDouble(addMemoryValue);
 
-        m.addToMemory(addMemoryNumber);
-        System.out.println("Result after adding to memory: " + m.resultMemory());
+        calc.addToMemory(addMemoryNumber);
+        System.out.println("Result after adding to memory: " + calc.resultMemory());
 
         System.out.println("Please enter value for subtraction from memory: ");
         String subMemoryValue = reader.readLine();
         double subMemoryNumber = Double.parseDouble(subMemoryValue);
 
-        m.subFromMemory(subMemoryNumber);
-        System.out.println("Result after subtraction from memory: " + m.resultMemory());
+        calc.subFromMemory(subMemoryNumber);
+        System.out.println("Result after subtraction from memory: " + calc.resultMemory());
 
-        m.cleanMemory();
-        System.out.println("Result after memory cleaning: " + m.resultMemory());
+        calc.cleanMemory();
+        System.out.println("Result after memory cleaning: " + calc.resultMemory());
     }
 }

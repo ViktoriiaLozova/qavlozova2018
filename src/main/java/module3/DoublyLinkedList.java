@@ -10,6 +10,18 @@ public class DoublyLinkedList<E> {
     private DoublyListCell<E> first;
     private int listSize = 0;
 
+    private static class DoublyListCell<E> {
+        E element;
+        DoublyListCell<E> next;
+        DoublyListCell<E> prev;
+
+        DoublyListCell(E element, DoublyListCell<E> next, DoublyListCell<E> prev) {
+            this.element = element;
+            this.next = next;
+            this.prev = prev;
+        }
+    }
+
     public void addElement(E element) {
         if (first == null) {
             first = new DoublyListCell<E>(element, null, null);
@@ -61,18 +73,6 @@ public class DoublyLinkedList<E> {
 
     public int size() {
         return listSize;
-    }
-
-    private static class DoublyListCell<E> {
-        E element;
-        DoublyListCell<E> next;
-        DoublyListCell<E> prev;
-
-        DoublyListCell(E element, DoublyListCell<E> next, DoublyListCell<E> prev) {
-            this.element = element;
-            this.next = next;
-            this.prev = prev;
-        }
     }
 
 }

@@ -14,33 +14,32 @@ package module3;
 public class Calculator {
     double memory = 0;
 
-    public static double add(double a1, double a2) {
-        return a1 + a2;
+    public static double add(double addValue1, double addValue2) {
+        return addValue1 + addValue2;
     }
 
-    public static double sub(double s1, double s2) {
-        return s1 - s2;
+    public static double sub(double subValue1, double subValue2) {
+        return subValue1 - subValue2;
     }
 
-    public static double mult(double m1, double m2) {
-        return m1 * m2;
+    public static double mult(double multValue1, double multValue2) {
+        return multValue1 * multValue2;
     }
 
-    public static double div(double d1, double d2) {
-        if (d2 != 0) {
-            return d1 / d2;
+    public static double div(double divValue1, double divValue2) {
+        if (divValue2 != 0) {
+            return divValue1 / divValue2;
         } else
-            System.out.println("Division on zero");
-        return Double.NaN;
+            throw new ArithmeticException("Division on zero is forbidden");
     }
 
-    public double addToMemory(double addmem) {
-        memory = memory + addmem;
+    public double addToMemory(double addToMemoryValue) {
+        memory = memory + addToMemoryValue;
         return memory;
     }
 
-    public double subFromMemory(double submem) {
-        memory = memory - submem;
+    public double subFromMemory(double subFromMemoryValue) {
+        memory = memory - subFromMemoryValue;
         return memory;
     }
 
