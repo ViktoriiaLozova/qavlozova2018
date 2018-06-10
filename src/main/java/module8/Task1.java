@@ -15,7 +15,7 @@ package module8;
 
 import java.util.List;
 
-public class Main {
+public class Task1 {
 
     public static String compress(String source) {
         String codedNumbers = "";
