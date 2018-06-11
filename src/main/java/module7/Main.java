@@ -5,7 +5,8 @@ package module7;
 В методе main реализуйте вызов к серверу по которому он сможет начать оповещение клиентов.
 Предусмотрите несколько реализаций сервера с одним интерфейсом Регистрацию клиентов предусмотрите в методе main Примечания:
 Для передачи текущей даты и времени используйте класс Date из пакета java.util
-//Get current date and time Date currentDate = new Date(); //Print current date and time System.out.println(currentDate);
+//Get current date and time Date currentDate = new Date();
+//Print current date and time System.out.println(currentDate);
 Общий код метода main может выглядеть следующим образом:
 public static void main(String[] args) {
 Server server1 = new ServerImplOne();

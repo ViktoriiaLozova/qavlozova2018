@@ -2,9 +2,10 @@ package module7;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class ServerImplOne implements Server {
-    private ArrayList<Client> clients = new ArrayList<Client>();
+    private List<Client> clients = new ArrayList<Client>();
 
     public void register(Client client) {
         clients.add(client);
