@@ -12,9 +12,9 @@ public class ServerImplTwo implements Server {
     }
 
     public void process() {
-        Date currentDate = new Date();
+        Date currentTime = new Date();
         for (Client client : clients) {
-            client.onDateTimeChange(currentDate);
+            client.onDateTimeChange(currentTime);
         }
     }
 }
