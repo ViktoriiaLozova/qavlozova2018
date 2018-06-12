@@ -9,10 +9,11 @@ Passport на предыдущем шаге), проверьте поведен�
 */
 
 import java.util.HashMap;
+import java.util.Map;
 
 public class Task3 {
     public static void main(String[] args) {
-        HashMap<Passport, Person> map = new HashMap<>();
+        Map<Passport, Person> map = new HashMap<>();
         Passport passport1 = new Passport("SO", 123);
         Passport passport2 = new Passport("MM", 987);
         Passport passport3 = new Passport("TT", 456);

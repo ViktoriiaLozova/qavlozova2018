@@ -13,6 +13,8 @@ package module8;
 должен выбросить checked exception.
  */
 
+import com.sun.xml.internal.org.jvnet.mimepull.DecodingException;
+
 import java.util.List;
 
 public class Task1 {
@@ -61,7 +63,7 @@ public class Task1 {
             if (charFromstring == '1' && !isNumber(source.charAt(i + 1)) && source.charAt(i - 1) != '1'
                     || isNumber(charFromstring) && charFromstring != '1' && i == 0
                     || charFromstring == '0' && source.charAt(i - 1) != '1') {
-                throw new Exception("Decoding error");
+                throw new DecodingException("Decoding error");
             }
             char nextChar = source.charAt(i + 1);
             if (!isNumber(charFromstring) && isNumber(nextChar) && nextChar != '1') {

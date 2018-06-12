@@ -1,5 +1,7 @@
 package module8;
 
+import java.util.Objects;
+
 public class Passport {
     private String series;
     private Integer number;
@@ -27,14 +29,16 @@ public class Passport {
 
     @Override
     public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
         Passport passport = (Passport) o;
-        return number.equals(passport.number) &&
-                series.equals(passport.series);
+        return Objects.equals(series, passport.series) &&
+                Objects.equals(number, passport.number);
     }
 
     @Override
     public int hashCode() {
-        return series.hashCode() + number.hashCode();
+        return Objects.hash(series, number);
     }
 
 }
