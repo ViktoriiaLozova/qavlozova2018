@@ -1,5 +1,7 @@
 package jUnitTask;
 
+import java.util.Objects;
+
 /**
  * Hаписать тесты для класса решения квадратного уравнения
  *
@@ -17,11 +19,6 @@ public class QEquation {
         return new Pair(x1, x2);
     }
 
-    public static void main(String[] args) {
-        Pair result = qEquation(1, 7, 12);
-        System.out.println(result.first);
-        System.out.println(result.second);
-    }
     public static class Pair {
         double first;
         double second;
@@ -38,6 +35,11 @@ public class QEquation {
             Pair pair = (Pair) o;
             return Double.compare(pair.first, first) == 0 &&
                     Double.compare(pair.second, second) == 0;
+        }
+
+        @Override
+        public int hashCode() {
+            return Objects.hash(first, second);
         }
     }
 
