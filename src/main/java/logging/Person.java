@@ -34,6 +34,7 @@ public class Person {
             this.childCount = ChildCount.One;
         } else if (childcount == 2) {
             this.childCount = ChildCount.Two;
+            Statistics.incrementTwoChildrenCount();
         } else if (childcount > 2) {
             this.childCount = ChildCount.TooMany;
         } else {
@@ -42,6 +43,7 @@ public class Person {
 
         if (pet.toLowerCase().equals(Pet.Cat.name().toLowerCase())){
             this.pet = Pet.Cat;
+            Statistics.incrementCatsCount();
         } else if (pet.toLowerCase().equals(Pet.Dog.name().toLowerCase())) {
             this.pet = Pet.Dog;
         } else if (pet.toLowerCase().equals(Pet.Fish.name().toLowerCase())) {
@@ -49,6 +51,8 @@ public class Person {
         } else {
             logger.warn("Not valid pet");
         }
+
+        Statistics.incrementPersonCount();
     }
 
     private static void setupLog4J(){
@@ -57,7 +61,7 @@ public class Person {
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
-        logger = Logger.getLogger(Logging.class.getName());
+        logger = Logger.getLogger(Person.class.getName());
     }
 
     public String getName() {
