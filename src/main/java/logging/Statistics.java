@@ -1,6 +1,7 @@
 package logging;
 
 import org.apache.log4j.Logger;
+import org.apache.log4j.PropertyConfigurator;
 
 import java.io.File;
 import java.net.MalformedURLException;
@@ -39,11 +40,7 @@ public class Statistics {
     }
 
     private static void setupLog4J(){
-        try {
-            System.setProperty("log4j.configuration", new File("src/main/resources", "log4j.properties").toURL().toString());
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        }
+        PropertyConfigurator.configure("src/main/resources/log4j.properties");
         logger = Logger.getLogger(Statistics.class.getName());
     }
 

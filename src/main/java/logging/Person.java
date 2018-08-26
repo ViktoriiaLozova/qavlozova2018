@@ -1,9 +1,7 @@
 package logging;
 
 import org.apache.log4j.Logger;
-
-import java.io.File;
-import java.net.MalformedURLException;
+import org.apache.log4j.PropertyConfigurator;
 
 public class Person {
     private String name;
@@ -15,14 +13,14 @@ public class Person {
     private static Logger logger;
 
     enum ChildCount {
-        One,
-        Two,
-        TooMany
+        ONE,
+        TWO,
+        TOO_MANY
     }
     enum Pet {
-        Cat,
-        Dog,
-        Fish
+        CAT,
+        DOG,
+        FISH
     }
 
     public Person(String name, String surname, String email, int childcount, String pet) {
@@ -31,23 +29,23 @@ public class Person {
         this.surname = surname;
         this.email = email;
         if (childcount == 1){
-            this.childCount = ChildCount.One;
+            this.childCount = ChildCount.ONE;
         } else if (childcount == 2) {
-            this.childCount = ChildCount.Two;
+            this.childCount = ChildCount.TWO;
             Statistics.incrementTwoChildrenCount();
         } else if (childcount > 2) {
-            this.childCount = ChildCount.TooMany;
+            this.childCount = ChildCount.TOO_MANY;
         } else {
             logger.warn("Not valid child count");
         }
 
-        if (pet.toLowerCase().equals(Pet.Cat.name().toLowerCase())){
-            this.pet = Pet.Cat;
+        if (pet.toLowerCase().equals(Pet.CAT.name().toLowerCase())){
+            this.pet = Pet.CAT;
             Statistics.incrementCatsCount();
-        } else if (pet.toLowerCase().equals(Pet.Dog.name().toLowerCase())) {
-            this.pet = Pet.Dog;
-        } else if (pet.toLowerCase().equals(Pet.Fish.name().toLowerCase())) {
-            this.pet = Pet.Fish;
+        } else if (pet.toLowerCase().equals(Pet.DOG.name().toLowerCase())) {
+            this.pet = Pet.DOG;
+        } else if (pet.toLowerCase().equals(Pet.FISH.name().toLowerCase())) {
+            this.pet = Pet.FISH;
         } else {
             logger.warn("Not valid pet");
         }
@@ -56,11 +54,7 @@ public class Person {
     }
 
     private static void setupLog4J(){
-        try {
-            System.setProperty("log4j.configuration", new File("src/main/resources", "log4j.properties").toURL().toString());
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        }
+        PropertyConfigurator.configure("src/main/resources/log4j.properties");
         logger = Logger.getLogger(Person.class.getName());
     }
 
@@ -105,7 +99,7 @@ public class Person {
     }
 
     public void print() {
-        System.out.println("Name: " + name + " Surname: " + surname + " Email: " + email);
+        logger.info("Name: " + name + " Surname: " + surname + " Email: " + email);
     }
 
     @Override
