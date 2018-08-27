@@ -41,7 +41,7 @@ public class Statistics {
 
     private static void setupLog4J(){
         PropertyConfigurator.configure("src/main/resources/log4j.properties");
-        logger = Logger.getLogger(Statistics.class.getName());
+        logger = Logger.getLogger(Statistics.class);
     }
 
 }

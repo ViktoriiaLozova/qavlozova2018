@@ -17,6 +17,7 @@ public class Person {
         TWO,
         TOO_MANY
     }
+
     enum Pet {
         CAT,
         DOG,
@@ -28,7 +29,13 @@ public class Person {
         this.name = name;
         this.surname = surname;
         this.email = email;
-        if (childcount == 1){
+        countChildren(childcount);
+        whoIsPet(pet);
+        Statistics.incrementPersonCount();
+    }
+
+    private int countChildren(int childcount) {
+        if (childcount == 1) {
             this.childCount = ChildCount.ONE;
         } else if (childcount == 2) {
             this.childCount = ChildCount.TWO;
@@ -38,8 +45,16 @@ public class Person {
         } else {
             logger.warn("Not valid child count");
         }
+        return childcount;
+    }
 
-        if (pet.toLowerCase().equals(Pet.CAT.name().toLowerCase())){
+    private String whoIsPet(String pet) {
+        if (pet == null) {
+            logger.error("Pet can't be null");
+            return pet;
+        }
+
+        if (pet.toLowerCase().equals(Pet.CAT.name().toLowerCase())) {
             this.pet = Pet.CAT;
             Statistics.incrementCatsCount();
         } else if (pet.toLowerCase().equals(Pet.DOG.name().toLowerCase())) {
@@ -49,13 +64,12 @@ public class Person {
         } else {
             logger.warn("Not valid pet");
         }
-
-        Statistics.incrementPersonCount();
+        return pet;
     }
 
-    private static void setupLog4J(){
+    private static void setupLog4J() {
         PropertyConfigurator.configure("src/main/resources/log4j.properties");
-        logger = Logger.getLogger(Person.class.getName());
+        logger = Logger.getLogger(Person.class);
     }
 
     public String getName() {
