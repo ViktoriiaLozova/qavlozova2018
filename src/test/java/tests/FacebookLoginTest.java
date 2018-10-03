@@ -1,5 +1,4 @@
-package webDriver;
-/*
+package tests;/*
 Launch new Browser
 Open URL http://facebook.com
 Type Login
@@ -9,13 +8,31 @@ Check that you have logged in
 Close the Browser
 */
 
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
 import org.openqa.selenium.WebDriver;
+import pageObjects.HomePage;
+import pageObjects.LoginPage;
+import runners.ChromeRunner;
 
-public class Homework1 {
-    public static void main(String[] args) {
-        WebDriver webDriver = ChromeRunner.initChromeDriver();
+public class FacebookLoginTest {
+
+    static WebDriver webDriver;
+
+    @Before
+    public void setUp() {
+        webDriver = ChromeRunner.initChromeDriver();
         webDriver.get("http://facebook.com");
+    }
 
+    @After
+    public void quiteDriver() {
+        webDriver.close();
+    }
+
+    @Test
+    public void loginFacebookTest() {
         LoginPage loginPage = new LoginPage(webDriver);
         loginPage.typeLogin("lozova.vic@gmail.com");
         loginPage.typePassword("P@ssword123");
@@ -24,7 +41,6 @@ public class Homework1 {
         HomePage homepage = new HomePage(webDriver);
         homepage.textPresentOnThePage("Добро пожаловать на Facebook, VikaTest!");
 
-        webDriver.close();
     }
 
 }
