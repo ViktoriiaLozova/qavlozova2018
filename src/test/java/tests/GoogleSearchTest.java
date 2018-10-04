@@ -26,7 +26,7 @@ Example:
 */
 public class GoogleSearchTest {
 
-    static WebDriver driver;
+    private WebDriver driver;
 
     @Before
     public void setUp() {

@@ -3,9 +3,8 @@ package pageObjects;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 
-public class LoginPage {
+public class LoginPage extends BasePage{
 
     @FindBy(id = "email")
     WebElement loginField;
@@ -16,8 +15,8 @@ public class LoginPage {
     @FindBy(xpath = "//input[@data-testid='royal_login_button']")
     WebElement loginButton;
 
-    public LoginPage(WebDriver driver) {
-        PageFactory.initElements(driver, this);
+    public LoginPage(WebDriver webDriver) {
+        super(webDriver);
     }
 
     public void typeLogin(String login) {

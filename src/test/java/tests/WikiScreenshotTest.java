@@ -16,7 +16,7 @@ import java.io.IOException;
 
 public class WikiScreenshotTest {
 
-    static WebDriver webDriver;
+    private WebDriver webDriver;
 
     @Before
     public void setUp() {

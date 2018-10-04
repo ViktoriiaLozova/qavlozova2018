@@ -18,7 +18,7 @@ import runners.ChromeRunner;
 
 public class FacebookLoginTest {
 
-    static WebDriver webDriver;
+    private WebDriver webDriver;
 
     @Before
     public void setUp() {

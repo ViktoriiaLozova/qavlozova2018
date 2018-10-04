@@ -4,15 +4,14 @@ import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 
-public class HomePage {
+public class HomePage extends BasePage{
 
     @FindBy(xpath = "//h2[@class='uiHeaderTitle'")
     WebElement welcomeMessage;
 
-    public HomePage(WebDriver driver) {
-        PageFactory.initElements(driver, this);
+    public HomePage(WebDriver webDriver) {
+        super(webDriver);
     }
 
     public void textPresentOnThePage(String message) {

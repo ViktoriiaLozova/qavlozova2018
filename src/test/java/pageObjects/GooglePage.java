@@ -2,12 +2,11 @@ package pageObjects;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 import utils.ScreenShotUtils;
 
-public class GooglePage {
+import java.util.List;
 
-    private WebDriver driver;
+public class GooglePage extends BasePage {
 
     @FindBy(id = "lst-ib")
     WebElement searchField;
@@ -15,9 +14,8 @@ public class GooglePage {
     @FindBy(id = "pnnext")
     WebElement nextButton;
 
-    public GooglePage(WebDriver driver) {
-        this.driver = driver;
-        PageFactory.initElements(driver, this);
+    public GooglePage(WebDriver webDriver) {
+        super(webDriver);
     }
 
     public void typeKeyWord(String keyWord) {
@@ -43,11 +41,12 @@ public class GooglePage {
         typeKeyWord(key);
         int pageCount = 1;
         while (true) {
-            try {
-                driver.findElement(By.xpath("//a[@href='" + expectedUrl + "']"));
-                ScreenShotUtils.captureWholeScreen(driver, screenName);
+            List<WebElement> webElements = webDriver.findElements(By.xpath("//a[@href='" + expectedUrl + "']"));
+            boolean isAtLeastOneUrlPresent = !webElements.isEmpty();
+            if (isAtLeastOneUrlPresent) {
+                ScreenShotUtils.captureWholeScreen(webDriver, screenName);
                 break;
-            } catch (NoSuchElementException e) {
+            } else {
                 scrollToBottom();
                 if (isNextButtonPresent()) {
                     clickNext();
@@ -61,9 +60,5 @@ public class GooglePage {
         System.out.println("Page number: " + pageCount);
     }
 
-    private void scrollToBottom() {
-        JavascriptExecutor js = (JavascriptExecutor) driver;
-        js.executeScript("window.scrollTo(0, document.body.scrollHeight)");
-    }
 
 }
